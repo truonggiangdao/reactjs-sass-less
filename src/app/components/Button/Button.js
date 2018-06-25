@@ -1,8 +1,9 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = (props) => (
+const Button = props => (
   <button
+    type="button"
     className={`button ${props.primary ? 'button-primary' : ''} ${props.block ? 'button-block' : ''}`}
     text={props.text || 'Button'}
     onClick={() => props.onClick()}>

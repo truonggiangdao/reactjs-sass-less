@@ -8,10 +8,11 @@ class Header extends Component {
     this.state = {
       showMenu: false,
     };
+    this.handleMenuClick = this.handleMenuClick.bind(this);
   }
 
   handleMenuClick() {
-    this.setState({showMenu: !this.state.showMenu});
+    this.setState(prevState => ({ showMenu: prevState.showMenu }));
   }
 
   render() {
@@ -21,14 +22,14 @@ class Header extends Component {
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" onClick={() => this.handleMenuClick()}>
               <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
+              <span className="icon-bar">a</span>
+              <span className="icon-bar">b</span>
+              <span className="icon-bar">c</span>
             </button>
             <NavLink className="navbar-brand" to="/">BLINK</NavLink>
           </div>
 
-          <div className={`collapse navbar-collapse ${this.state.showMenu ? 'in' : ''}`}>
+          <div className={`collapse navbar-collapse ${prevState => (prevState.showMenu ? 'in' : '')}`}>
             <ul className="nav navbar-nav">
               <li><NavLink to="/profile">Profile</NavLink></li>
               <li><NavLink to="/login">Login</NavLink></li>
@@ -41,6 +42,6 @@ class Header extends Component {
       </nav>
     );
   }
-};
+}
 
 export default Header;

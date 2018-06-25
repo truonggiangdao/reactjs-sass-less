@@ -9,14 +9,14 @@ class MainLayout extends Component {
   render() {
     return (
       <div className="header-fixed">
-        <Header/>
+        <Header />
         <div>
-          <Route path={`${this.props.match.path}profile`} component={Profile}/>
-          <Route exact path={this.props.match.path} component={Home}/>
+          <Route path={`${this.props.match.path}profile`} component={Profile} />
+          <Route exact path={this.props.match.path} component={Home} />
         </div>
       </div>
     );
   }
-};
+}
 
 export default MainLayout;

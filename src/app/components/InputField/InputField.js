@@ -5,9 +5,11 @@ class InputField extends Component {
   constructor(props) {
     super(props);
     this.inputEl = React.createRef();
+    this.type = React.createElement();
   }
 
   onChange(event) {
+    event.preventDefault();
     if (this.props.onChange && this.props.onChange.constructor === Function) {
       this.props.onChange(event, event.target.value);
     }
@@ -19,7 +21,7 @@ class InputField extends Component {
       <div className="group-input-field">
         <label className="input-field-label" htmlFor={this.props.name} onClick={() => this.inputEl.current.focus()}>
           {this.props.label || ''}
-          { this.props.required && (
+          {this.props.required && (
             <span className="input-field-required">*</span>
           )}:
         </label>
@@ -32,9 +34,9 @@ class InputField extends Component {
           onKeyUp={(evt) => this.onChange(evt)}
           onBlur={(evt) => this.onChange(evt)}
           defaultValue={this.props.value} />
-        <div className="error" >{errors}</div>
+        <div className="error">{errors}</div>
       </div>
-    )
+    );
   }
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 import './Login.scss';
 import InputField from '@/components/InputField';
@@ -105,7 +106,9 @@ class Login extends Component {
       <div className="container-login">
         <div className="wrapper-login">
           <div className="logo">
-            <strong className="blink-logo">Bliink</strong>
+            <NavLink to="/">
+              <strong className="blink-logo">Bliink</strong>
+            </NavLink>
           </div>
           <div className="form-login-wrapper">
             <span className="title-login">Sign In</span>

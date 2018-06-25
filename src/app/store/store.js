@@ -7,7 +7,7 @@ import { retrieveCurrentUser } from './userActions';
 const store = createStore(
   reducers,
   {},
-  applyMiddleware(thunk)
+  applyMiddleware(thunk),
 );
 
 export default store;

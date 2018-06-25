@@ -8,29 +8,23 @@ const validationResponse = {
 };
 
 const validate = (value, type, rules) => {
-  if (!type && !rules) {
-    if (value) {
-      return {
-        ...validationResponse,
-        valid: true,
-        errors: [],
-      };
-    }
-    return {
-      ...validationResponse,
-      valid: false,
-      errors: [
-        MESSAGES.REQUIRED,
-      ],
-    };
+  if (!type && !rules && validateRequired(value)) {
+    return validateRequired(value);
   }
 
   if (type === INPUT_FIELDS.EMAIL) {
     return validateEmail(value);
   }
-  if (type === INPUT_FIELDS.EMAIL) {
-    return validateEmail(value);
+
+  if (type === INPUT_FIELDS.PASSWORD) {
+    return validatePassword(value);
   }
+
+  return {
+    ...validationResponse,
+    valid: true,
+    errors: [],
+  };
 };
 
 const validateRequired = value => {

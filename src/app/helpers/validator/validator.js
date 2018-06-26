@@ -7,27 +7,7 @@ const validationResponse = {
   errors: [],
 };
 
-const validate = (value, type, rules) => {
-  if (!type && !rules && validateRequired(value)) {
-    return validateRequired(value);
-  }
-
-  if (type === INPUT_FIELDS.EMAIL) {
-    return validateEmail(value);
-  }
-
-  if (type === INPUT_FIELDS.PASSWORD) {
-    return validatePassword(value);
-  }
-
-  return {
-    ...validationResponse,
-    valid: true,
-    errors: [],
-  };
-};
-
-const validateRequired = value => {
+const validateRequired = (value) => {
   if (!value) {
     return {
       ...validationResponse,
@@ -40,7 +20,7 @@ const validateRequired = value => {
   return null;
 };
 
-const validateString = value => {
+const validateString = (value) => {
   if (!value || value.constructor !== String) {
     return {
       ...validationResponse,
@@ -59,7 +39,7 @@ const validateStringLength = (value, min, max) => {
       return validateRequired(value);
     }
   }
-  if (validator.isLength(value, {min, max})) {
+  if (validator.isLength(value, { min, max })) {
     return {
       ...validationResponse,
       valid: true,
@@ -75,7 +55,7 @@ const validateStringLength = (value, min, max) => {
   };
 };
 
-const validateEmail = value => {
+const validateEmail = (value) => {
   if (validateRequired(value)) {
     return validateRequired(value);
   }
@@ -95,7 +75,7 @@ const validateEmail = value => {
   };
 };
 
-const validatePassword = value => {
+const validatePassword = (value) => {
   if (validateRequired(value)) {
     return validateRequired(value);
   }
@@ -103,6 +83,26 @@ const validatePassword = value => {
     return validateString(value);
   }
   return validateStringLength(value, 6, 15);
+};
+
+const validate = (value, type, rules) => {
+  if (!type && !rules && validateRequired(value)) {
+    return validateRequired(value);
+  }
+
+  if (type === INPUT_FIELDS.EMAIL) {
+    return validateEmail(value);
+  }
+
+  if (type === INPUT_FIELDS.PASSWORD) {
+    return validatePassword(value);
+  }
+
+  return {
+    ...validationResponse,
+    valid: true,
+    errors: [],
+  };
 };
 
 export {

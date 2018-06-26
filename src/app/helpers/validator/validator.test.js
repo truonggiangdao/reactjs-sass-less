@@ -1,4 +1,4 @@
-import validator, {INPUT_FIELDS} from '../validator';
+import validator, { INPUT_FIELDS } from './validator';
 
 it('Validate field errors', () => {
   const result = validator.validate('abc', INPUT_FIELDS.EMAIL);
@@ -9,7 +9,7 @@ it('Validate field errors', () => {
     throw new Error('Validate field errors not return errors as ARRAY');
   }
 
-  result.errors.forEach(error => {
+  result.errors.forEach((error) => {
     if (!error || error.constructor !== String) {
       throw new Error('Validate field errors not return error messages as string');
     }

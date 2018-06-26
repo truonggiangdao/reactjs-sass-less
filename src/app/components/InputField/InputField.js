@@ -9,7 +9,6 @@ class InputField extends Component {
   }
 
   onChange(event) {
-    event.preventDefault();
     if (this.props.onChange && this.props.onChange.constructor === Function) {
       this.props.onChange(event, event.target.value);
     }

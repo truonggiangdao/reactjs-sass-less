@@ -5,18 +5,18 @@ const userReducer = (state = {
   token: '',
   firstName: '',
   lastName: '',
-  email: ''
+  email: '',
 }, action) => {
   switch (action.type) {
     case 'UPDATE_TOKEN':
-      state = {
+      this.state = {
         ...state,
         token: action.payload,
       };
       break;
 
     case 'UPDATE_PROFILE':
-      state = {
+      this.state = {
         ...state,
         id: action.payload.id,
         firstName: action.payload.first_name,
@@ -31,7 +31,7 @@ const userReducer = (state = {
   return state;
 };
 
-const loginReducer = (state = {error: ''}, action) => {
+const loginReducer = (state = { error: '' }, action) => {
   switch (action.type) {
     case 'LOGIN_SET_ERROR':
       return {

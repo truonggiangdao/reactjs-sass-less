@@ -13,6 +13,7 @@ module.exports = {
     "rules": {
         "import/no-unresolved": 0,
         "no-use-before-define": 1,
+        "linebreak-style": 0,
         "import/no-named-as-default-member": 1,
         "react/prefer-stateless-function": 1,
         "react/jsx-filename-extension": 0,

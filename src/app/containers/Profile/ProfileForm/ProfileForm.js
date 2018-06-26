@@ -106,5 +106,4 @@ class ProfileForm extends Component {
 ProfileForm.propTypes = {
   user: PropTypes.element.isRequired,
 };
-
 export default ProfileForm;

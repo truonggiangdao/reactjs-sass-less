@@ -7,6 +7,7 @@ import InputField from '@/components/InputField';
 import Button from '@/components/Button';
 import Link from '@/components/Link';
 import validator, { INPUT_FIELDS } from '@/helpers/validator';
+import PropTypes from 'prop-types';
 import { login } from '@/store/userActions';
 
 class Login extends Component {
@@ -93,8 +94,8 @@ class Login extends Component {
   }
 
   handleLogin() {
-    const [email, password] = this.state;
-    const [processloginRequest, history] = this.props;
+    const { email, password } = this.state;
+    const { processloginRequest, history } = this.props;
     if (this.validateLogin()) {
       this.setState({ loading: true });
       processloginRequest(
@@ -112,7 +113,7 @@ class Login extends Component {
 
   render() {
     const { errors, loading } = this.state;
-    const error = this.props;
+    const { error } = this.props;
     return (
       <div className="container-login">
         <div className="wrapper-login">
@@ -162,11 +163,11 @@ class Login extends Component {
     );
   }
 }
-// Login.propTypes = {
-//   processloginRequest: PropTypes.element.isRequired,
-//   history: PropTypes.element.isRequired,
-//   error: PropTypes.element.isRequired,
-// };
+Login.propTypes = {
+  processloginRequest: PropTypes.element.isRequired,
+  history: PropTypes.element.isRequired,
+  error: PropTypes.element.isRequired,
+};
 const mapStateToProps = state => ({ error: state.login.error });
 
 const mapDispatchToProps = dispatch => ({

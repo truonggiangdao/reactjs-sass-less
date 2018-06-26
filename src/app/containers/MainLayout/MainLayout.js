@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Header from './Header';
 import Home from '../Home';
 import Profile from '../Profile';
@@ -13,7 +13,7 @@ class MainLayout extends Component {
   }
 
   render() {
-    const { match } = this.props;
+    const match = this.props;
     return (
       <div className="header-fixed">
         <Header />
@@ -25,7 +25,7 @@ class MainLayout extends Component {
     );
   }
 }
-MainLayout.propTypes = {
-  match: PropTypes.element.isRequired,
-};
+// MainLayout.propTypes = {
+//   match: PropTypes.element.isRequired,
+// };
 export default MainLayout;

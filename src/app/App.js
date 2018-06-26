@@ -4,27 +4,22 @@ import './App.scss';
 import Login from './containers/Login';
 import MainLayout from './containers/MainLayout';
 
-// class App extends React.PureComponent {
-//   render() {
-//     return (
-//       <BrowserRouter>
-//         <Switch>
-//           <Route exact path="/login" component={Login} />
-//           <Route path="/" component={MainLayout} />
-//         </Switch>
-//       </BrowserRouter>
-//     );
-//   }
-// }
-function App() {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route path="/" component={MainLayout} />
-      </Switch>
-    </BrowserRouter>
-  );
+class App extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+          <Route path="/" component={MainLayout} />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;

@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './Header';
 import { BrowserRouter } from 'react-router-dom';
+import Header from './Header';
+
 
 it('Header Component renders without crashing', () => {
   const div = document.createElement('div');

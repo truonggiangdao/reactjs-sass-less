@@ -1,5 +1,5 @@
 const registerIntercepters = (axios) => {
-  axios.interceptors.request.use(config => {
+  axios.interceptors.request.use((config) => {
     // Do something before request is sent
     const token = localStorage.getItem('token');
     if (token) {
@@ -8,12 +8,12 @@ const registerIntercepters = (axios) => {
         headers: {
           ...config.headers,
           Authorization: `Bearer ${token}`,
-        }
-      }
+        },
+      };
       return newConfig;
     }
     return config;
   });
-}
+};
 
 export default registerIntercepters;

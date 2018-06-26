@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import ProfilePicture from '@/components/ProfilePicture';
 import './ProfileForm.scss';
+import PropTypes from 'prop-types';
 import InputField from '@/components/InputField';
 import Button from '@/components/Button';
-import {INPUT_FIELDS} from '@/helpers/validator';
+import { INPUT_FIELDS } from '@/helpers/validator';
 
 class ProfileForm extends Component {
   constructor(props) {
@@ -13,12 +14,20 @@ class ProfileForm extends Component {
         ...props.user,
       },
     };
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  componentDidMount() {
+    const { user } = this.state;
+    console.log(user);
+  }
+
   handleClick() {
-    return;
+    return this;
   }
 
   handleFieldChange(field, value) {
+    const user = this.state;
     let fieldKey;
     switch (field) {
       case INPUT_FIELDS.FIRST_NAME:
@@ -28,24 +37,19 @@ class ProfileForm extends Component {
       case INPUT_FIELDS.LAST_NAME:
         fieldKey = 'lastName';
         break;
-    
       default:
         fieldKey = 'email';
         break;
     }
     console.log(fieldKey, value);
-    const user = { ...this.state.user };
-    user[fieldKey] = value;
-    this.setState({user});
-    console.log(this.state.user);
-  }
-
-  componentDidMount() {
-    console.log(this.state.user);
+    const user1 = user;
+    user1[fieldKey] = value;
+    this.setState({ user1 });
+    console.log(user);
   }
 
   render() {
-    const {user} = this.state;
+    const { user } = this.state;
     return (
       <div className="profile-form padding-lg">
         <div className="row padding-lg-top">
@@ -89,15 +93,17 @@ class ProfileForm extends Component {
 
         <div className="row padding-lg-top">
           <div className="col-xs-6 text-left">
-          <Button text="EDIT PASSWORD" handleClickEvent={() => this.handleClick()}/>
+            <Button text="EDIT PASSWORD" handleClickEvent={() => this.handleClick()} />
           </div>
           <div className="col-xs-6 text-right">
-          <Button primary text="VALIDATE" handleClickEvent={() => this.handleClick()}/>
+            <Button primary text="VALIDATE" handleClickEvent={() => this.handleClick()} />
           </div>
         </div>
       </div>
     );
   }
+}
+ProfileForm.propTypes = {
+  user: PropTypes.element.isRequired,
 };
-
 export default ProfileForm;

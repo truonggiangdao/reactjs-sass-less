@@ -1,8 +1,6 @@
-import rest, {parseAPIUrl, END_POINT_KEYS} from './api';
+import rest, { parseAPIUrl, END_POINT_KEYS } from './api';
 
-const getLoginUserByToken = () => {
-  return rest.get(parseAPIUrl(END_POINT_KEYS.AUTH));
-};
+const getLoginUserByToken = () => { rest.get(parseAPIUrl(END_POINT_KEYS.AUTH)); };
 
 const login = (email, password) => {
   const loginParams = new URLSearchParams();

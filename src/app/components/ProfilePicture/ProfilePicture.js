@@ -1,7 +1,7 @@
 import React from 'react';
 import './ProfilePicture.scss';
 
-const ProfilePicture = (props) => (
+const ProfilePicture = () => (
   <div className="profile-picture">
     <div className="picture">&nbsp;</div>
   </div>

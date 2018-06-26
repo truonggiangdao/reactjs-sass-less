@@ -6,63 +6,69 @@ import './Login.scss';
 import InputField from '@/components/InputField';
 import Button from '@/components/Button';
 import Link from '@/components/Link';
-import validator, {INPUT_FIELDS} from '@/helpers/validator';
+import validator, { INPUT_FIELDS } from '@/helpers/validator';
+import PropTypes from 'prop-types';
 import { login } from '@/store/userActions';
 
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.props = props;
     this.state = {
       loading: false,
       email: '',
       password: '',
       errors: {
         email: '',
-        password: ''
+        password: '',
       },
-    }
+    };
+    this.validateLogin = this.validateLogin.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   validateEmail = (value) => {
     const result = validator.validateEmail(value);
+    const { errors } = this.state;
     if (!result.valid) {
       this.setState({
         email: value,
         errors: {
-          ...this.state.errors,
-          email: result.errors[0]
-        }
+          errors,
+          email: result.errors[0],
+        },
       });
       return false;
     }
     this.setState({
       email: value,
       errors: {
-        ...this.state.errors,
-        email: ''
-      }
+        errors,
+        email: '',
+      },
     });
     return true;
   };
 
   validatePassword = (value) => {
     const result = validator.validatePassword(value);
+    const { errors } = this.state;
     if (!result.valid) {
       this.setState({
         password: value,
         errors: {
-          ...this.state.errors,
-          password: result.errors[0]
-        }
+          errors,
+          password: result.errors[0],
+        },
       });
       return false;
     }
     this.setState({
       password: value,
       errors: {
-        ...this.state.errors,
-        password: ''
-      }
+        errors,
+        password: '',
+      },
     });
     return true;
   };
@@ -81,27 +87,33 @@ class Login extends Component {
   };
 
   validateLogin() {
-    return this.validateEmail(this.state.email)
-      && this.validatePassword(this.state.password);
+    const { email, password } = this.state;
+
+    return this.validateEmail(email)
+      && this.validatePassword(password);
   }
 
   handleLogin() {
+    const { email, password } = this.state;
+    const { processloginRequest, history } = this.props;
     if (this.validateLogin()) {
-      this.setState({loading: true});
-      this.props.processloginRequest(
-        this.state.email,
-        this.state.password
+      this.setState({ loading: true });
+      processloginRequest(
+        email,
+        password,
       )
-      .then(() => {
-        this.props.history.push('/profile');
-      })
-      .finally(() => {
-        this.setState({loading: false});
-      });
+        .then(() => {
+          history.push('/profile');
+        })
+        .finally(() => {
+          this.setState({ loading: false });
+        });
     }
   }
 
   render() {
+    const { errors, loading } = this.state;
+    const { error } = this.props;
     return (
       <div className="container-login">
         <div className="wrapper-login">
@@ -118,7 +130,7 @@ class Login extends Component {
               label="Email"
               required
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.EMAIL, val)}
-              errors={this.state.errors.email}
+              errors={errors.email}
             />
 
             <InputField
@@ -127,43 +139,39 @@ class Login extends Component {
               label="Password"
               required
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.PASSWORD, val)}
-              errors={this.state.errors.password}
+              errors={errors.password}
             />
             {
-              this.state.loading && (
+              loading && (
                 <p className="text-info">Loading...</p>
               )
             }
             {
-              this.props.error && (
-                <p className="text-danger">{this.props.error}</p>
+              error && (
+                <p className="text-danger">{error}</p>
               )
             }
             <div className="btn-login">
-              <Button primary block name="login" text="SIGN IN" onClick={() => this.handleLogin()}/>
+              <Button primary block name="login" text="SIGN IN" onClick={() => this.handleLogin()} />
             </div>
             <div className="text-center link-forgot-password">
-              <Link text="Forgot password?"/>
+              <Link text="Forgot password?" href="https://youtube.com" />
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    error: state.login.error,
-  };
+Login.propTypes = {
+  processloginRequest: PropTypes.element.isRequired,
+  history: PropTypes.element.isRequired,
+  error: PropTypes.element.isRequired,
 };
+const mapStateToProps = state => ({ error: state.login.error });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    processloginRequest: (email, password) => {
-      return login(dispatch, {email, password});
-    },
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  processloginRequest: (email, password) => ({ return: login(dispatch, { email, password }) }),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

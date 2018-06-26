@@ -7,6 +7,7 @@ class InputField extends Component {
     super(props);
     this.props = props;
     this.inputEl = React.createRef();
+    this.value = React.createRef();
   }
 
   onChange(event) {
@@ -18,7 +19,7 @@ class InputField extends Component {
 
   render() {
     const {
-      errors, value, label, required, type, name,
+      errors, label, required, type, name,
     } = this.props;
 
     return (
@@ -41,7 +42,7 @@ class InputField extends Component {
             placeholder={label || ''}
             onKeyUp={evt => this.onChange(evt)}
             onBlur={evt => this.onChange(evt)}
-            defaultValue={value}
+            defaultValue={this.value}
           />
         </label>
         <div className="error">{errors}</div>
@@ -50,11 +51,10 @@ class InputField extends Component {
   }
 }
 InputField.propTypes = {
-  errors: PropTypes.element.isRequired,
-  value: PropTypes.element.isRequired,
-  label: PropTypes.element.isRequired,
-  name: PropTypes.element.isRequired,
-  type: PropTypes.element.isRequired,
-  required: PropTypes.element.isRequired,
+  errors: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  required: PropTypes.bool.isRequired,
 };
 export default InputField;

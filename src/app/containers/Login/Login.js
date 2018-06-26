@@ -164,9 +164,9 @@ class Login extends Component {
   }
 }
 Login.propTypes = {
-  processloginRequest: PropTypes.element.isRequired,
-  history: PropTypes.element.isRequired,
-  error: PropTypes.element.isRequired,
+  processloginRequest: PropTypes.func.isRequired,
+  history: PropTypes.instanceOf(Object).isRequired,
+  error: PropTypes.string.isRequired,
 };
 const mapStateToProps = state => ({ error: state.login.error });
 

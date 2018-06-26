@@ -16,18 +16,24 @@ class Button extends Component {
   constructor(props) {
     super(props);
     this.props = props;
+
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    console.log('this is', this);
   }
 
   render() {
     const {
-      primary, block, text, props,
+      primary, block, text,
     } = this.props;
     return (
       <button
         type="button"
         className={`button ${primary ? 'button-primary' : ''} ${block ? 'button-block' : ''}`}
         text={text || 'Button'}
-        onClick={() => props.onClick()}
+        onClick={e => this.onClick(e)}
       >
         { text || 'Button'}
       </button>
@@ -35,10 +41,9 @@ class Button extends Component {
   }
 }
 Button.propTypes = {
-  primary: PropTypes.element.isRequired,
-  block: PropTypes.element.isRequired,
-  text: PropTypes.element.isRequired,
-  props: PropTypes.element.isRequired,
+  primary: PropTypes.bool.isRequired,
+  block: PropTypes.bool.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default Button;

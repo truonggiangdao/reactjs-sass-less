@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.scss';
 import Login from './containers/Login';
 import MainLayout from './containers/MainLayout';
+import Profile from './containers/Profile/Profile';
 
 class App extends React.PureComponent {
   constructor(props) {
@@ -16,6 +17,7 @@ class App extends React.PureComponent {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route path="/" component={MainLayout} />
+          <Route path="/profile" component={Profile} />
         </Switch>
       </BrowserRouter>
     );

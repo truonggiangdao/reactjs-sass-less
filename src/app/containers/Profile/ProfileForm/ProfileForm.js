@@ -18,8 +18,8 @@ class ProfileForm extends Component {
   }
 
   componentDidMount() {
-    const { user } = this.state;
-    console.log(user);
+    // const { user } = this.state;
+    // console.log(user);
   }
 
   handleClick() {
@@ -41,11 +41,11 @@ class ProfileForm extends Component {
         fieldKey = 'email';
         break;
     }
-    console.log(fieldKey, value);
+    // console.log(fieldKey, value);
     const user1 = user;
     user1[fieldKey] = value;
     this.setState({ user1 });
-    console.log(user);
+    // console.log(user);
   }
 
   render() {

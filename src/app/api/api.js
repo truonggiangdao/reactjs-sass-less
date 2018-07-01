@@ -32,17 +32,17 @@ export {
 };
 
 // const API_URL = 'https://api-stg.bliink.io';
-const API_URL = 'http://192.168.2.86';
+// const API_URL = 'http://192.168.2.86';
+const API_URL = 'http://localhost:8888';
 
 const rest = axios.create({
-  baseURL: `${API_URL}/rest/v1/`,
+  baseURL: `${API_URL}/users/`,
   headers: {
     post: {
-      'content-type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
   },
 });
-
 registerIntercepters(rest);
 
 export default rest;

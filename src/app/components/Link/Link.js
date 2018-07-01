@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Link.scss';
+import PropTypes from 'prop-types';
 
 // const Link = props => (
 //   <div className="">
@@ -13,14 +14,16 @@ class Link extends Component {
   }
 
   render() {
-    const text = this.props;
+    const { text } = this.props;
     return (
       <div className="">
-        <a className="link-text" text={text} href="a">text</a>
+        <a className="link-text" text={text} href="a">{text}</a>
       </div>
     );
   }
 }
-
+Link.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 
 export default Link;

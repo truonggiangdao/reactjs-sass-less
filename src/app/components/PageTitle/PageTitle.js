@@ -21,7 +21,7 @@ class PageTitle extends Component {
 }
 
 PageTitle.propTypes = {
-  title: PropTypes.element.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default PageTitle;

@@ -23,8 +23,10 @@ class Login extends Component {
         password: '',
       },
     };
-    this.validateLogin = this.validateLogin.bind(this);
-    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.setState({ loading: false });
   }
 
   validateEmail = (value) => {
@@ -34,7 +36,7 @@ class Login extends Component {
       this.setState({
         email: value,
         errors: {
-          errors,
+          ...errors,
           email: result.errors[0],
         },
       });
@@ -43,7 +45,7 @@ class Login extends Component {
     this.setState({
       email: value,
       errors: {
-        errors,
+        ...errors,
         email: '',
       },
     });
@@ -57,7 +59,7 @@ class Login extends Component {
       this.setState({
         password: value,
         errors: {
-          errors,
+          ...errors,
           password: result.errors[0],
         },
       });
@@ -66,7 +68,7 @@ class Login extends Component {
     this.setState({
       password: value,
       errors: {
-        errors,
+        ...errors,
         password: '',
       },
     });
@@ -86,14 +88,8 @@ class Login extends Component {
     }
   };
 
-  validateLogin() {
-    const { email, password } = this.state;
 
-    return this.validateEmail(email)
-      && this.validatePassword(password);
-  }
-
-  handleLogin() {
+  handleLogin = () => {
     const { email, password } = this.state;
     const { processloginRequest, history } = this.props;
     if (this.validateLogin()) {
@@ -101,14 +97,19 @@ class Login extends Component {
       processloginRequest(
         email,
         password,
-      )
-        .then(() => {
-          history.push('/profile');
-        })
-        .finally(() => {
-          this.setState({ loading: false });
-        });
+      ).then(() => {
+        history.push('/profile');
+      });
+      // .finally(() => {
+      //   this.setState({ loading: false });
+      // });
     }
+  }
+
+  validateLogin() {
+    const { email, password } = this.state;
+    return this.validateEmail(email)
+      && this.validatePassword(password);
   }
 
   render() {
@@ -128,6 +129,7 @@ class Login extends Component {
               type="email"
               name="email"
               label="Email"
+              value=""
               required
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.EMAIL, val)}
               errors={errors.email}
@@ -137,6 +139,7 @@ class Login extends Component {
               type="password"
               name="password"
               label="Password"
+              value=""
               required
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.PASSWORD, val)}
               errors={errors.password}
@@ -171,7 +174,7 @@ Login.propTypes = {
 const mapStateToProps = state => ({ error: state.login.error });
 
 const mapDispatchToProps = dispatch => ({
-  processloginRequest: (email, password) => ({ return: login(dispatch, { email, password }) }),
+  processloginRequest: (email, password) => login(dispatch, { email, password }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

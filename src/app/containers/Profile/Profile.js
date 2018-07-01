@@ -13,6 +13,7 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props;
+    console.log(user);
     return (
       <div>
         <PageTitle title="Profile" />
@@ -26,11 +27,13 @@ class Profile extends Component {
   }
 }
 
+// const mapStateToProps = state => ({ user: state.user });
+
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
 Profile.propTypes = {
-  user: PropTypes.element.isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
 };
-
-const mapStateToProps = state => ({ user: state.user });
-
-
 export default connect(mapStateToProps)(Profile);

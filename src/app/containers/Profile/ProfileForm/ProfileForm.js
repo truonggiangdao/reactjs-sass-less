@@ -9,25 +9,24 @@ import { INPUT_FIELDS } from '@/helpers/validator';
 class ProfileForm extends Component {
   constructor(props) {
     super(props);
+    this.props = props;
     this.state = {
       user: {
         ...props.user,
       },
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    // const { user } = this.state;
-    // console.log(user);
+    const { user } = this.state;
+    console.log(user);
   }
 
-  handleClick() {
-    return this;
+  handleClick = () => {
+    // console.log('Clicked');
   }
 
   handleFieldChange(field, value) {
-    const user = this.state;
     let fieldKey;
     switch (field) {
       case INPUT_FIELDS.FIRST_NAME:
@@ -42,9 +41,9 @@ class ProfileForm extends Component {
         break;
     }
     // console.log(fieldKey, value);
-    const user1 = user;
-    user1[fieldKey] = value;
-    this.setState({ user1 });
+    const { ...user } = this.state;
+    user[fieldKey] = value;
+    this.setState({ user });
     // console.log(user);
   }
 
@@ -65,6 +64,8 @@ class ProfileForm extends Component {
               name="firstName"
               label={INPUT_FIELDS.FIRST_NAME}
               value={user.firstName}
+              errors=""
+              required
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.FIRST_NAME, val)}
             />
           </div>
@@ -72,6 +73,8 @@ class ProfileForm extends Component {
             <InputField
               type="lastName"
               name="lastName"
+              errors=""
+              required
               label={INPUT_FIELDS.LAST_NAME}
               value={user.lastName}
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.LAST_NAME, val)}
@@ -104,6 +107,6 @@ class ProfileForm extends Component {
   }
 }
 ProfileForm.propTypes = {
-  user: PropTypes.element.isRequired,
+  user: PropTypes.instanceOf(Object).isRequired,
 };
 export default ProfileForm;

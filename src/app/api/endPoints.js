@@ -4,8 +4,8 @@ const END_POINT_KEYS = {
 };
 
 const END_POINTS = {
-  AUTH: 'user/auth',
-  USER_PROFILE: 'users/{id}',
+  AUTH: '/login',
+  USER_PROFILE: '/login',
 };
 
 export {

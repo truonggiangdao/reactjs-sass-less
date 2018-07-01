@@ -15,13 +15,12 @@ const userReducer = (state = {
         token: action.payload,
       };
       break;
-
     case 'UPDATE_PROFILE':
       this.state = {
         ...state,
         id: action.payload.id,
-        firstName: action.payload.first_name,
-        lastName: action.payload.last_name,
+        firstName: action.payload.firstName,
+        lastName: action.payload.lastName,
         email: action.payload.email,
       };
       break;
@@ -29,9 +28,9 @@ const userReducer = (state = {
     default:
       break;
   }
+  console.log(state);
   return state;
 };
-
 const loginReducer = (state = { error: '' }, action) => {
   switch (action.type) {
     case 'LOGIN_SET_ERROR':

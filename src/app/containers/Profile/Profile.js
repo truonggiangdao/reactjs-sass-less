@@ -13,7 +13,7 @@ class Profile extends Component {
 
   render() {
     const { user } = this.props;
-    console.log(user);
+    // console.log(user);
     return (
       <div>
         <PageTitle title="Profile" />

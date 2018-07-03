@@ -19,6 +19,7 @@ class Header extends Component {
   }
 
   render() {
+    const { showMenu } = this.state;
     return (
       <nav className="navbar navbar-default navbar-fixed navbar-dark">
         <div className="container">
@@ -31,10 +32,11 @@ class Header extends Component {
             </button>
             <NavLink className="navbar-brand" to="/">BLINK</NavLink>
           </div>
-          <div className={`collapse navbar-collapse ${prevState => (prevState.showMenu ? 'in' : '')}`}>
+          <div className={`collapse navbar-collapse ${showMenu ? 'in' : ''}`}>
             <ul className="nav navbar-nav">
               <li><NavLink to="/profile">Profile</NavLink></li>
               <li><NavLink to="/login">Login</NavLink></li>
+              <li><NavLink to="/home">Home</NavLink></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><NavLink to="/login">Logout</NavLink></li>

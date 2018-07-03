@@ -2,7 +2,7 @@ const registerIntercepters = (axios) => {
   axios.interceptors.request.use((config) => {
     // Do something before request is sent
     const tokenUser = localStorage.getItem('token');
-    console.log(tokenUser);
+    // console.log(tokenUser);
     if (tokenUser) {
       const newConfig = {
         ...config,

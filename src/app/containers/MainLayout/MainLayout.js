@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from './Header';
 
-import Home from '../Home';
+import Home from '../Home/Home';
 import Profile from '../Profile';
 import './MainLayout.scss';
 
@@ -21,6 +21,7 @@ class MainLayout extends Component {
         <div>
           <Route path={`${match.path}profile`} component={Profile} />
           <Route exact path={match.path} component={Home} />
+          <Route path={`${match.path}home`} component={Home} />
         </div>
       </div>
     );

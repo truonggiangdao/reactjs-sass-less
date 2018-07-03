@@ -18,12 +18,12 @@ class ProfileForm extends Component {
   }
 
   componentDidMount() {
-    const { user } = this.state;
-    console.log(user);
+    // const { user } = this.state;
+    // console.log(user);
   }
 
-  handleClick = () => {
-    // console.log('Clicked');
+  handleClick() {
+    return this;
   }
 
   handleFieldChange(field, value) {
@@ -87,6 +87,8 @@ class ProfileForm extends Component {
             <InputField
               type="email"
               name="email"
+              errors=""
+              required
               label={INPUT_FIELDS.EMAIL}
               value={user.email}
               onChange={(evt, val) => this.handleFieldChange(INPUT_FIELDS.EMAIL, val)}
@@ -96,10 +98,10 @@ class ProfileForm extends Component {
 
         <div className="row padding-lg-top">
           <div className="col-xs-6 text-left">
-            <Button text="EDIT PASSWORD" handleClickEvent={() => this.handleClick()} />
+            <Button primary={false} block text="EDIT PASSWORD" onClick={() => this.handleClick()} handleClickEvent={() => this.handleClick()} />
           </div>
           <div className="col-xs-6 text-right">
-            <Button primary text="VALIDATE" handleClickEvent={() => this.handleClick()} />
+            <Button primary block text="VALIDATE" onClick={() => this.handleClick()} handleClickEvent={() => this.handleClick()} />
           </div>
         </div>
       </div>

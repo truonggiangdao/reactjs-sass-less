@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import ReactDOM from 'react-dom';
 import './Home.scss';
 // import PropTypes from 'prop-types';
-// import $ from 'jquery';
+import $ from 'jquery';
 import CarouselIndicator from './Carousel/CarouselIndicator';
 import CarouselLeftArrow from './Carousel/CarouselLeftArrow';
 import CarouselRightArrow from './Carousel/CarouselRightArrow';
@@ -43,42 +43,89 @@ class Home extends Component {
     // });
   }
 
+
+  goToNextSlide = (e) => {
+    e.preventDefault();
+    $(() => {
+      const next = $('.carousel__slide--active').next();
+      if (next.length === 0) {
+        $('.carousel__slide--active').addClass('bien-mat-o-ben-trai').one('webkitAnimationEnd', () => {
+          $('.bien-mat-o-ben-trai').removeClass('bien-mat-o-ben-trai');
+        });
+        $('.carousel__slides .carousel__slide:nth-child(1)').addClass('di-vao-tu-ben-phai').one('webkitAnimationEnd', () => {
+          // remove .active
+          $('.carousel__slide--active').removeClass('carousel__slide--active');
+          $('.di-vao-tu-ben-phai').addClass('carousel__slide--active').removeClass('di-vao-tu-ben-phai');
+        });
+      } else {
+        $('.carousel__slide--active').addClass('bien-mat-o-ben-trai').one('webkitAnimationEnd', () => {
+          $('.bien-mat-o-ben-trai').removeClass('bien-mat-o-ben-trai');
+        });
+        next.addClass('di-vao-tu-ben-phai').one('webkitAnimationEnd', () => {
+        // remove .active
+          $('.carousel__slide--active').removeClass('carousel__slide--active');
+          $('.di-vao-tu-ben-phai').addClass('carousel__slide--active').removeClass('di-vao-tu-ben-phai');
+        });
+      }
+    });
+    // const { activeIndex } = this.state;
+    // let index = activeIndex;
+    // const items = this.carouselSlidesData;
+    // const slidesLength = items.length - 1;
+
+    // if (index === slidesLength) {
+    //   index = -1;
+    // }
+
+    // index += 1;
+
+    // this.setState({
+    //   activeIndex: index,
+    // });
+  }
+
+  goToPrevSlide = (e) => {
+    e.preventDefault();
+    $(() => {
+      const pre = $('.carousel__slide--active').prev();
+      if (pre.length === 1) {
+        $('.carousel__slide--active').addClass('bien-mat-o-ben-phai').one('webkitAnimationEnd', () => {
+          $('.bien-mat-o-ben-phai').removeClass('bien-mat-o-ben-phai');
+        });
+
+        $('.carousel__slides .carousel__slide:nth-child(1)').addClass('di-vao-tu-ben-trai').one('webkitAnimationEnd', () => {
+          // remove .active
+          $('.carousel__slide--active').removeClass('carousel__slide--active');
+          $('.di-vao-tu-ben-trai').addClass('carousel__slide--active').removeClass('di-vao-tu-ben-trai');
+        });
+      } else {
+        $('.carousel__slide--active').addClass('bien-mat-o-ben-phai').one('webkitAnimationEnd', () => {
+          $('.bien-mat-o-ben-phai').removeClass('bien-mat-o-ben-phai');
+        });
+
+        $('.carousel__slides .carousel__slide:last-child').addClass('di-vao-tu-ben-trai').one('webkitAnimationEnd', () => {
+          // remove .active
+          $('.carousel__slide--active').removeClass('carousel__slide--active');
+          $('.di-vao-tu-ben-trai').addClass('carousel__slide--active').removeClass('di-vao-tu-ben-trai');
+        });
+      }
+    });
+    // const { activeIndex } = this.state;
+    // let index = activeIndex;
+    // const items = this.carouselSlidesData;
+    // const slidesLength = items.length;
+
+    // if (index < 1) {
+    //   index = slidesLength;
+    // }
+    // index -= 1;
+
+    // this.setState({
+    //   activeIndex: index,
+    // });
+  }
+
   goToSlide(index) {
-    this.setState({
-      activeIndex: index,
-    });
-  }
-
-  goToPrevSlide(e) {
-    e.preventDefault();
-    const { activeIndex } = this.state;
-    let index = activeIndex;
-    const items = this.carouselSlidesData;
-    const slidesLength = items.length;
-
-    if (index < 1) {
-      index = slidesLength;
-    }
-    index -= 1;
-
-    this.setState({
-      activeIndex: index,
-    });
-  }
-
-  goToNextSlide(e) {
-    e.preventDefault();
-    const { activeIndex } = this.state;
-    let index = activeIndex;
-    const items = this.carouselSlidesData;
-    const slidesLength = items.length - 1;
-
-    if (index === slidesLength) {
-      index = -1;
-    }
-
-    index += 1;
-
     this.setState({
       activeIndex: index,
     });

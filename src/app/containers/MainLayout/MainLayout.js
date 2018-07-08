@@ -21,7 +21,6 @@ class MainLayout extends Component {
         <div>
           <Route path={`${match.path}profile`} component={Profile} />
           <Route exact path={match.path} component={Home} />
-          <Route path={`${match.path}home`} component={Home} />
         </div>
       </div>
     );

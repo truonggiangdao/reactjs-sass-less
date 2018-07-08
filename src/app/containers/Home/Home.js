@@ -1,166 +1,237 @@
 import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
 import './Home.scss';
-// import PropTypes from 'prop-types';
-import $ from 'jquery';
-import CarouselIndicator from './Carousel/CarouselIndicator';
-import CarouselLeftArrow from './Carousel/CarouselLeftArrow';
-import CarouselRightArrow from './Carousel/CarouselRightArrow';
-import CarouselSlide from './Carousel/CarouselSlide';
+import Slider from 'react-slick';
+// import $ from 'jquery';
+import { TimelineMax, Linear } from 'gsap/TweenMax';
+// import Draggable from "gsap/Draggable";
+import '../../../../node_modules/slick-carousel/slick/slick.css';
+import '../../../../node_modules/slick-carousel/slick/slick-theme.css';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-
-    this.goToSlide = this.goToSlide.bind(this);
-    this.goToPrevSlide = this.goToPrevSlide.bind(this);
-    this.goToNextSlide = this.goToNextSlide.bind(this);
-
-    this.state = {
-      activeIndex: 0,
-    };
-
-    this.carouselSlidesData = [
-      {
-        src: 'https://www.holidayguru.nl/wp-content/uploads/2016/09/Norwegen-Fjords-shutterstock_316382687-1.jpg',
-        alt: 'First Slide',
-      },
-      {
-        src: 'https://www.jssor.com/demos/img/gallery/980x380/002.jpg',
-        alt: 'Second Slide',
-      },
-      {
-        src: 'http://wowslider.com/sliders/demo-18/data1/images/hongkong1081704.jpg',
-        alt: 'Thirst Slide',
-
-      },
-    ];
+    this.props = props;
   }
 
   componentDidMount() {
-    // $('.carousel').carousel({
-    //   interval: 3000,
-    // });
-  }
-
-
-  goToNextSlide = (e) => {
-    e.preventDefault();
-    $(() => {
-      const next = $('.carousel__slide--active').next();
-      if (next.length === 0) {
-        $('.carousel__slide--active').addClass('bien-mat-o-ben-trai').one('webkitAnimationEnd', () => {
-          $('.bien-mat-o-ben-trai').removeClass('bien-mat-o-ben-trai');
-        });
-        $('.carousel__slides .carousel__slide:nth-child(1)').addClass('di-vao-tu-ben-phai').one('webkitAnimationEnd', () => {
-          // remove .active
-          $('.carousel__slide--active').removeClass('carousel__slide--active');
-          $('.di-vao-tu-ben-phai').addClass('carousel__slide--active').removeClass('di-vao-tu-ben-phai');
-        });
-      } else {
-        $('.carousel__slide--active').addClass('bien-mat-o-ben-trai').one('webkitAnimationEnd', () => {
-          $('.bien-mat-o-ben-trai').removeClass('bien-mat-o-ben-trai');
-        });
-        next.addClass('di-vao-tu-ben-phai').one('webkitAnimationEnd', () => {
-        // remove .active
-          $('.carousel__slide--active').removeClass('carousel__slide--active');
-          $('.di-vao-tu-ben-phai').addClass('carousel__slide--active').removeClass('di-vao-tu-ben-phai');
-        });
-      }
-    });
-    // const { activeIndex } = this.state;
-    // let index = activeIndex;
-    // const items = this.carouselSlidesData;
-    // const slidesLength = items.length - 1;
-
-    // if (index === slidesLength) {
-    //   index = -1;
-    // }
-
-    // index += 1;
-
-    // this.setState({
-    //   activeIndex: index,
-    // });
-  }
-
-  goToPrevSlide = (e) => {
-    e.preventDefault();
-    $(() => {
-      const pre = $('.carousel__slide--active').prev();
-      if (pre.length === 1) {
-        $('.carousel__slide--active').addClass('bien-mat-o-ben-phai').one('webkitAnimationEnd', () => {
-          $('.bien-mat-o-ben-phai').removeClass('bien-mat-o-ben-phai');
-        });
-
-        $('.carousel__slides .carousel__slide:nth-child(1)').addClass('di-vao-tu-ben-trai').one('webkitAnimationEnd', () => {
-          // remove .active
-          $('.carousel__slide--active').removeClass('carousel__slide--active');
-          $('.di-vao-tu-ben-trai').addClass('carousel__slide--active').removeClass('di-vao-tu-ben-trai');
-        });
-      } else {
-        $('.carousel__slide--active').addClass('bien-mat-o-ben-phai').one('webkitAnimationEnd', () => {
-          $('.bien-mat-o-ben-phai').removeClass('bien-mat-o-ben-phai');
-        });
-
-        $('.carousel__slides .carousel__slide:last-child').addClass('di-vao-tu-ben-trai').one('webkitAnimationEnd', () => {
-          // remove .active
-          $('.carousel__slide--active').removeClass('carousel__slide--active');
-          $('.di-vao-tu-ben-trai').addClass('carousel__slide--active').removeClass('di-vao-tu-ben-trai');
-        });
-      }
-    });
-    // const { activeIndex } = this.state;
-    // let index = activeIndex;
-    // const items = this.carouselSlidesData;
-    // const slidesLength = items.length;
-
-    // if (index < 1) {
-    //   index = slidesLength;
-    // }
-    // index -= 1;
-
-    // this.setState({
-    //   activeIndex: index,
-    // });
-  }
-
-  goToSlide(index) {
-    this.setState({
-      activeIndex: index,
-    });
+    const effect = new TimelineMax({ paused: true });
+    effect.from('.name', 0.5, { scale: 2, opacity: 0 })
+      .to('.name', 0.5, { scale: 1, opacity: 1 })
+      .from('.introduce', 1, { x: 500, opacity: 0 })
+      .from('.header-fixed', 1, { y: -50, opacity: 0.5 })
+      .from('.slider', 1, { opacity: 0, y: 100 })
+      .from('.hr', 0.5, { x: -1000, opacity: 0 })
+      .staggerFrom('.product', 0.6, { y: 100, opacity: 0 }, 0.2)
+      .staggerFrom('.btn-primary', 1, { opacity: 0, scale: 2 }, 0.2);
+    function show() {
+      effect.play();
+    }
+    const tl = new TimelineMax({ paused: true });
+    tl.staggerTo('.btn-primary', 1, { rotationX: 360, ease: Linear.easeOut }, 0.03);
+    tl.staggerTo('.btn-primary', 1, { rotationX: 360, ease: Linear.easeOut }, 0.03);
+    const showContentWeb = new TimelineMax({ onComplete: show });
+    showContentWeb.from('.img-load.text-center', 1.5, { scale: 2, opacity: 0 })
+      .to('.img-load.text-center', 1, { opacity: 1 })
+      .to('.img-load.text-center', 1, { opacity: 0 });
   }
 
   render() {
-    const slides = this.carouselSlidesData;
-    const { activeIndex } = this.state;
+    const settings = {
+      className: 'center slider variable-width',
+
+      centerMode: true,
+      centerPadding: '60px',
+
+      // variableWidth: true,
+
+      dots: true,
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      initialSlide: 0,
+      autoplay: true,
+      speed: 2000,
+      autoplaySpeed: 3000,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    };
     return (
-      <div className="container">
-        <div className="carousel">
-          <div className="carousel__inner">
-            <CarouselLeftArrow onClick={e => this.goToPrevSlide(e)} />
-            <div className="carousel__slides">
-              {slides.map((slide, index) => (
-                <CarouselSlide
-                  key={index.toString()}
-                  index={index}
-                  activeIndex={activeIndex}
-                  slide={slide}
-                />
-              ))}
+      <div>
+        <div className="load">
+          <div className="img-load text-center">
+            <img className="image-gs" src="https://media2.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy-preview.gif" alt="" />
+          </div>
+        </div>
+        <div className="container">
+          <Slider {...settings}>
+            <div>
+              <h3>
+                <img className="img-responsive" src="https://dw9to29mmj727.cloudfront.net/promo/2016/5248-SeriesHeaders_NARSHP_2000x800.jpg" alt="" />
+              </h3>
             </div>
-            <CarouselRightArrow onClick={e => this.goToNextSlide(e)} />
-            <ol className="carousel__indicators">
-              {slides.map((slide, index) => (
-                <CarouselIndicator
-                  key={index.toString()}
-                  index={index}
-                  activeIndex={activeIndex}
-                  isActive={activeIndex === index}
-                  onClick={() => this.goToSlide(index)}
-                />
-              ))}
-            </ol>
+            <div>
+              <h3>
+                <img className="img-responsive" src="https://ctd-thechristianpost.netdna-ssl.com/en/full/51770/naruto-shippuden.jpg" alt="" />
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <img className="img-responsive" src="http://taihinhnendep.biz/content/uploads/2015/01/tai-hinh-nen-naruto-vs-sasuke-176-1.jpeg" alt="" />
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <img className="img-responsive" src="https://blog.uptodown.com/wp-content/uploads/naruto-boruto-ninja-voltage-featured.jpg" alt="" />
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <img className="img-responsive" src="https://genknews.genkcdn.vn/thumb_w/640/2017/untitled-1-1505638397014.jpg" alt="" />
+              </h3>
+            </div>
+            <div>
+              <h3>
+                <img className="img-responsive" src="https://vignette.wikia.nocookie.net/onepiecetreasurecruiseglobal/images/2/2e/C1753.png/revision/latest?cb=20171215215959" alt="" />
+              </h3>
+            </div>
+          </Slider>
+          <div className="conten text-center">
+            <h2 className="name">Hello, My name is Dong</h2>
+            <p className="introduce">This is my first animation</p>
+          </div>
+          <hr className="hr" />
+          <div className="products">
+            <div className="row">
+              <div className="col-sm-4">
+                <div className="product">
+                  <div className="panel panel-info">
+                    <div className="panel-heading">
+                      <h3 className="panel-title">
+                        <img className="img-product" src="http://i2.imacdn.com/vg/2017/03/11/c5fadf0970120b37_29282a17da1c0fff_457001489246401326121.jpg" alt="" />
+                      </h3>
+                    </div>
+                    <div className="panel-body">
+                      Boruto: Naruto Next Generations
+                    </div>
+                    <div className="panel-footer">
+                      <button type="button" className="btn btn-primary">Watch now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="product">
+                  <div className="panel panel-info">
+                    <div className="panel-heading">
+                      <h3 className="panel-title">
+                        <img className="img-product" src="http://i.imacdn.com/vg/2015/05/naruto-dattebayo-large-1432284981.jpg" alt="" />
+                      </h3>
+                    </div>
+                    <div className="panel-body">
+                      Naruto: Naruto Dattebayo
+                    </div>
+                    <div className="panel-footer">
+                      <button type="button" className="btn btn-primary">Watch now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="product">
+                  <div className="panel panel-info">
+                    <div className="panel-heading">
+                      <h3 className="panel-title">
+                        <img className="img-product" src="http://i.imacdn.com/vg/2016/07/01/7c868aa86063686d_d749742c8f567c0c_44135146734386613.jpg" alt="" />
+                      </h3>
+                    </div>
+                    <div className="panel-body">
+                      Naruto: Naruto Next Generations
+                    </div>
+                    <div className="panel-footer">
+                      <button type="button" className="btn btn-primary">Watch now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-sm-4">
+                <div className="product">
+                  <div className="panel panel-info">
+                    <div className="panel-heading">
+                      <h3 className="panel-title">
+                        <img className="img-product" src="http://i.imacdn.com/vg/2016/05/vua-hai-tac-thumbnail-1462767698.jpg" alt="" />
+                      </h3>
+                    </div>
+                    <div className="panel-body">
+                      Onepiece: Vua Hải Tặc
+                    </div>
+                    <div className="panel-footer">
+                      <button type="button" className="btn btn-primary">Watch now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-sm-4">
+                <div className="product">
+                  <div className="panel panel-info">
+                    <div className="panel-heading">
+                      <h3 className="panel-title">
+                        <img className="img-product" src="http://i.imacdn.com/vg/2016/01/one-piece-the-movie-thumbnail-1452652857.jpg" alt="" />
+                      </h3>
+                    </div>
+                    <div className="panel-body">
+                      One Pice The Movie
+                    </div>
+                    <div className="panel-footer">
+                      <button type="button" className="btn btn-primary">Watch now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-sm-4">
+                <div className="product">
+                  <div className="panel panel-info">
+                    <div className="panel-heading">
+                      <h3 className="panel-title">
+                        <img className="img-product" src="http://i.imacdn.com/vg/2015/05/one-piece-ova-i-defeat-the-pirate-ganzack-large-1432284991.jpg" alt="" />
+                      </h3>
+                    </div>
+                    <div className="panel-body">
+                      One Piece OVA I: Defeat the Pirate Ganzack
+                    </div>
+                    <div className="panel-footer">
+                      <button type="button" className="btn btn-primary">Watch now</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

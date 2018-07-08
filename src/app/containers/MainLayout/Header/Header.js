@@ -36,7 +36,6 @@ class Header extends Component {
             <ul className="nav navbar-nav">
               <li><NavLink to="/profile">Profile</NavLink></li>
               <li><NavLink to="/login">Login</NavLink></li>
-              <li><NavLink to="/home">Home</NavLink></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li><NavLink to="/login">Logout</NavLink></li>

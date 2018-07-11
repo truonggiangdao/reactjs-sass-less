@@ -1,0 +1,99 @@
+@import '@/scss/variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+.list-images{
+  position: relative;
+  background-image: url('./img/bg.png');
+  padding: 0 5rem;
+  background-size: 100%;
+}
+
+img {
+  width: 100%;
+}
+.img-fluid.r1-c1 {
+  margin-top: 8rem;
+  height: 40rem;
+}
+img.img-fluid.r1-c2 {
+  position: relative;
+  left: 17rem;
+  z-index: 2;
+  width: 20rem;
+  top: 27rem;
+  height: 18rem;
+}
+@media (max-width: 575.98px) { 
+  img.img-fluid.r1-c2{
+    position: static;
+  }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+  img.img-fluid.r1-c2{
+    position: static;
+  }
+}
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  img.img-fluid.r1-c2{
+    position: relative;
+    top: 10rem;
+  }
+ }
+ img.img-fluid.r1-c3 {
+  margin-top: 17rem;
+  height: 17.5rem;
+}
+img.img-fluid.r2-c1 {
+  margin-top: 15rem;
+  height: 30rem;
+  margin-left: 5rem;
+  width: 75%;
+}
+img.img-fluid.r2-c2 {
+  width: 25rem;
+}
+img.img-fluid.r2-c3 {
+  width: 25rem;
+  height: 30rem;
+  position: relative;
+  bottom: 7rem;
+  left: 8rem;
+}
+
+img.img-fluid.r3-c1 {
+  margin-top: 13rem;
+  height: 40rem;
+  margin-left: 6rem;
+}
+img.img-fluid.r3-c2 {
+  width: 25rem;
+    position: relative;
+    left: 15rem;
+    bottom: 5rem;
+    z-index: 2;
+}
+img.img-fluid.r3-c3 {
+  margin-top: 20rem;
+  width: 25rem;
+  height: 25rem;
+}
+
+img.img-fluid.r4-c1 {
+  margin-top: 10rem;
+}
+img.img-fluid.r4-c2 {
+  width: 20rem;
+  height: 30rem;
+  position: relative;
+  top: 25rem;
+  right: 8rem;
+}
+img.img-fluid.r4-c3 {
+  height: 45rem;
+  width: 30rem;
+  position: relative;
+  right: 10rem;
+}
+

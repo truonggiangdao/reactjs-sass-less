@@ -10,369 +10,364 @@ $padding_bottom_responsive: 4rem;
   padding: 0 5rem;
   background-size: 100%;
   min-height: 190rem;
-  & img{
+  img {
     position: absolute;
     width: 30rem;
     height: 30rem;
-  }
-
-  // img {
-  //   &.r1-c1 {
-  //     height: 60rem;
-  //   }
-  // }
-}
-
-// .list-images img {
-//   @media (max-width: 767px) {
-//     color: red;
-//   }
-//   @media (max-width: 991px) {
-//     color: blue;
-//   }
-// }
-// @media (max-width: 767px) {
-//   .list-images img {
-//     color: red;
-//   }
-// }
-
-// @media (max-width: 991px) {
-//   .list-images img {
-//     color: blue;
-//   }
-// }
-//Row 1
-img {
-  &.r1-c1 {
-    height: 60rem;
-  }
-  &.r1-c2 {
-    top: 30rem;
-    right: 45rem;
-    width: auto;
-    height: 20rem;
-    z-index: 2;
-  }
-  &.r1-c3 {
-    right: 13rem;
-    top: 11rem;
-    width: 35rem;
-    height: auto;
-  }
-  //Row 2
-  &.r2-c1 {
-    width: 30rem;
-    height: 27rem;
-    top: 68rem;
-    left: 4rem;
-  }
-  &.r2-c2 {
-    width: auto;
-    height: 30rem;
-    top: 61rem;
-    left: 38rem;
-  }
-  &.r2-c3 {
-    top: 50rem;
-    width: auto;
-    height: 30rem;
-    right: 5rem;
-  }
-  //Row 3
-  &.r3-c1 {
-    width: auto;
-    height: 48rem;
-    top: 105rem;
-    left: 7rem;
-  }
-  &.r3-c2 {
-    z-index: 2;
-    right: 29rem;
-    top: 96rem;
-    height: auto;
-    width: 30rem;
-  }
-  &.r3-c3 {
-    width: 30rem;
-    height: auto;
-    top: 112rem;
-    right: 4rem;
-  }
-  //Row 4
-  &.r4-c1 {
-    top: 160rem;
-    height: auto;
-    width: 25rem;
-  }
-  &.r4-c2 {
-    top: 175rem;
-    height: auto;
-    left: 25rem;
-    width: 16rem;
-    z-index: 2;
-  }
-  &.r4-c3 {
-    height: auto;
-    right: 12rem;
-    width: 32rem;
-    z-index: 2;
-    top: 149rem;
-    padding-bottom: $padding_bottom_responsive;
-    
-  }
-  //Responsive extra small and small devices
-  @media (max-width: 767.98px) { 
-  // .list-images {
-  //   position: relative;
-  //   background-image: url(/static/media/bg.0e2564b8.png);
-  //   padding: 0 5rem;
-  //   background-size: 100%;
-  //   height: 190rem;
-  // }
-    &.r1-c2,  &.r1-c1{
-      position: static;
-      width: 100%;
-      height: auto;
-      padding-top: $padding_top_responsive;
-    }
-    &.r1-c3{
-      position: static;
-      width: 100%;
-      height: auto;
-      margin-top: 0;
-      padding-top: $padding_top_responsive;
+    //Row 1
+    &.r1 {
+      &-c1 {
+        height: 60rem;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static;
+          width: 100%;
+          height: auto;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: auto;
+          height: 46rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          width: auto;
+          height: 53rem;
+        }
+      }
+      &-c2 {
+        top: 30rem;
+        right: 45rem;
+        width: auto;
+        height: 20rem;
+        z-index: 2;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static;
+          width: 100%;
+          height: auto;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 20rem;
+          top: 23rem;
+          height: auto;
+          left: 29rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          top: 30rem;
+          right: 34rem;
+          width: 22rem;
+          height: auto;
+          z-index: 2;
+        }
+      }
+      &-c3 {
+        right: 13rem;
+        top: 11rem;
+        width: 35rem;
+        height: auto;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static;
+          width: 100%;
+          height: auto;
+          margin-top: 0;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          right: 2rem;
+          top: 10rem;
+          width: 25rem;
+          height: auto;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          right: 5rem;
+          top: 11rem;
+          width: 35rem;
+          height: auto;
+        }
+      }
     }
     //Row 2
-    &.r2-c1{
-      position: static;
-      width: 100% ;
-      height: auto;
-      margin-left: 0 ;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
-    }
-    &.r2-c2{
-      position: static;
-      width: 100% ;
-      height: auto;
-      margin-left: 0 ;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
-    }
-    &.r2-c3{
-      position: static ;
-      width: 100% ;
-      height: auto;
-      margin-left: 0 ;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
+    &.r2 {
+      &-c1 {
+        width: 30rem;
+        height: 27rem;
+        top: 68rem;
+        left: 4rem;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static;
+          width: 100% ;
+          height: auto;
+          margin-left: 0 ;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 20rem;
+          height: 25rem;
+          top: 53rem;
+          left: 6rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          width: 25rem;
+          height: auto;
+          top: 61rem;
+          left: 5rem;
+        }
+      }
+      &-c2 {
+        width: auto;
+        height: 30rem;
+        top: 61rem;
+        left: 38rem;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static;
+          width: 100% ;
+          height: auto;
+          margin-left: 0 ;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 19rem;
+          height: auto;
+          top: 48rem;
+          left: 30rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          width: 29rem;
+          height: auto;
+          top: 55rem;
+          left: 33rem;
+        }
+      }
+      &-c3 {
+        top: 50rem;
+        width: auto;
+        height: 30rem;
+        right: 5rem;
+         //Responsive small devices
+         @media (max-width: 767px) {
+          position: static ;
+          width: 100% ;
+          height: auto;
+          margin-left: 0 ;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 19rem;
+          height: auto;
+          top: 33rem;
+          left: 50rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          width: 25rem;
+          height: auto;
+          right: 5rem;
+        }
+      }
     }
     //Row 3
-    &.r3-c1{
-      position: static;
-      width: 100%;
-      height: auto;
-      margin-left: 0;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
-    }
-    &.r3-c2{
-      position: static ;
-      width: 100% ;
-      height: auto;
-      margin-left: 0;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
-    }
-    &.r3-c3{
-      position: static ;
-      width: 100% ;
-      height: auto;
-      margin-left: 0;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
+    &.r3 {
+      &-c1 {
+        width: auto;
+        height: 48rem;
+        top: 105rem;
+        left: 7rem;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static;
+          width: 100%;
+          height: auto;
+          margin-left: 0;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: auto;
+          height: 40rem;
+          top: 86rem;
+          left: 3rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          width: auto;
+          height: 48rem;
+          top: 88rem;
+          left: 3rem;
+        }
+      }
+      &-c2 {
+        z-index: 2;
+        right: 29rem;
+        top: 96rem;
+        height: auto;
+        width: 30rem;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static ;
+          width: 100% ;
+          height: auto;
+          margin-left: 0;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: auto;
+          left: 33rem;
+          top: 80rem;
+          height: 17rem;
+          z-index: 2;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          z-index: 2;
+          right: 26rem;
+          top: 92rem;
+          height: auto;
+          width: 30rem;
+        }
+      }
+      &-c3 {
+        width: 30rem;
+        height: auto;
+        top: 112rem;
+        right: 4rem;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static ;
+          width: 100% ;
+          height: auto;
+          margin-left: 0;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          width: 25rem;
+          top: 96rem;
+          height: auto;
+          right: 2rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+    
+        }
+      }
     }
     //Row 4
-    &.r4-c1{
-      position: static;
-      width: 100% ;
-      height: auto;
-      margin-left: 0 ;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
+    &.r4 {
+      &-c1 {
+        top: 160rem;
+        height: auto;
+        width: 25rem;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static;
+          width: 100% ;
+          height: auto;
+          margin-left: 0 ;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          top: 132rem;
+          height: auto;
+          width: 25rem;
+          left: 0rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          top: 147rem;
+          height: auto;
+          left: 0;
+          width: 25rem;
+        }
+      }
+      &-c2 {
+        top: 175rem;
+        height: auto;
+        left: 25rem;
+        width: 16rem;
+        z-index: 2;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static ;
+          width: 100% ;
+          height: auto;
+          margin-left: 0 ;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          top: 145rem;
+          height: auto;
+          left: 20rem;
+          width: 16rem;
+          z-index: 2;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          top: 160rem;
+          height: auto;
+          left: 20rem;
+          width: 16rem;
+          z-index: 2;
+        }
+      }
+      &-c3 {
+        height: auto;
+        right: 12rem;
+        width: 32rem;
+        z-index: 2;
+        top: 149rem;
+        padding-bottom: $padding_bottom_responsive;
+        //Responsive small devices
+        @media (max-width: 767px) {
+          position: static ;
+          width: 100% ;
+          height: auto;
+          margin-left: 0;
+          margin-top: 0 ;
+          padding-top: $padding_top_responsive;
+        }
+        //Responsive medium devices
+        @media (min-width: 768px) and (max-width: 991px) {
+          height: 40rem;
+          width: auto;
+          bottom: 12rem;
+          right: 4rem;
+          top: 120rem;
+        }
+        //Responsive large devices
+        @media (min-width: 992px) and (max-width: 1199px) {
+          height: auto;
+          right: 12rem;
+          width: 32rem;
+          z-index: 2;
+          top: 139rem;
+        }
+      }
     }
-    &.r4-c2{
-      position: static ;
-      width: 100% ;
-      height: auto;
-      margin-left: 0 ;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
-    }
-    &.r4-c3{
-      position: static ;
-      width: 100% ;
-      height: auto;
-      margin-left: 0;
-      margin-top: 0 ;
-      padding-top: $padding_top_responsive;
-    }
-  }
-  //Responsive medium devices
-@media (min-width: 768px) and (max-width: 991.98px) { 
-    &.r1-c1 {
-      width: auto;
-      height: 46rem;
-    }
-    &.r1-c2{
-      position: relative;
-      top: 27rem;
-      left: 4rem;
-    }
-    &.r1-c2 {
-      width: 18rem;
-      height: auto;
-      top: 18rem;
-      left: 25rem;
-    }
-    &.r1-c3 {
-      right: 2rem;
-      top: 10rem;
-      width: 25rem;
-      height: auto;
-    }
-    &.r2-c1 {
-      width: 20rem;
-      height: 25rem;
-      top: 53rem;
-      left: 6rem;
-    }
-    &.r2-c2 {
-      width: 19rem;
-      height: auto;
-      top: 48rem;
-      left: 30rem;
-    }
-    &.r2-c3 {
-      width: 19rem;
-      height: auto;
-      top: 33rem;
-      left: 50rem;
-    }
-    &.r3-c1 {
-      width: auto;
-      height: 40rem;
-      top: 86rem;
-      left: 3rem;
-    }
-    &.r3-c2 {
-      width: auto;
-      left: 33rem;
-      top: 80rem;
-      height: 17rem;
-      z-index: 2;
-  }
-  &.r3-c3 {
-    width: 25rem;
-    top: 96rem;
-    height: auto;
-    right: 2rem;
-  }
-  &.r4-c1 {
-    top: 132rem;
-    height: auto;
-    width: 25rem;
-    left: 0rem;
-  }
-  &.r4-c2 {
-    top: 145rem;
-    height: auto;
-    left: 20rem;
-    width: 16rem;
-    z-index: 2;
-  }
-  &.r4-c3 {
-    height: 40rem;
-    width: auto;
-    bottom: 12rem;
-    right: 4rem;
-    top: 120rem;
-  }
-  
-  }
-  //Responsive large devices
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  &.r1-c1 {
-    width: auto;
-    height: 53rem;
-  }
-  &.r1-c2 {
-    top: 30rem;
-    right: 34rem;
-    width: 22rem;
-    height: auto;
-    z-index: 2;
-  } 
-  &.r1-c3 {
-    right: 5rem;
-    top: 11rem;
-    width: 35rem;
-    height: auto;
-  }
-  &.r2-c1 {
-    width: 25rem;
-    height: auto;
-    top: 61rem;
-    left: 5rem;
-  }
-  &.r2-c2 {
-    width: 29rem;
-    height: auto;
-    top: 55rem;
-    left: 33rem;
-
-  }
-  &.r2-c3 {
-    width: 25rem;
-    height: auto;
-    right: 5rem;
-  }
-  &.r3-c1 {
-    width: auto;
-    height: 48rem;
-    top: 88rem;
-    left: 3rem;
-  }
-  &.r3-c2 {
-    z-index: 2;
-    right: 26rem;
-    top: 92rem;
-    height: auto;
-    width: 30rem;
-  }
-  &.r4-c1 {
-    top: 147rem;
-    height: auto;
-    left: 0;
-    width: 25rem;
-  }
-  &.r4-c2 {
-    top: 160rem;
-    height: auto;
-    left: 20rem;
-    width: 16rem;
-    z-index: 2;
-  }
-  &.r4-c3 {
-    height: auto;
-    right: 12rem;
-    width: 32rem;
-    z-index: 2;
-    top: 139rem;
-  }
   }
 }
-
-

@@ -13,15 +13,15 @@ class Carousel extends Component {
       // className: 'center slider variable-width',
       className: 'center slider',
       centerMode: true,
-      centerPadding: '4rem',
+      // centerPadding: '4rem',
       // variableWidth: true,
       dots: true,
       infinite: true,
       slidesToShow: 3,
       slidesToScroll: 1,
       initialSlide: 0,
-      autoplay: true,
-      speed: 2000,
+      // autoplay: true,
+      speed: 500,
       autoplaySpeed: 2000,
       responsive: [
         {

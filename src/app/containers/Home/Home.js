@@ -21,10 +21,10 @@ class Home extends Component {
     const effect = new TimelineMax({ paused: true });
     effect.from('.name', 0.5, { scale: 2, opacity: 0 })
       .to('.name', 0.5, { scale: 1, opacity: 1 })
-      .from('.introduce', 1, { x: 500, opacity: 0 })
+      .from('.introduce', 1, { opacity: 0 })
       .from('.header-fixed', 1, { y: -50, opacity: 0.5, ease: Bounce.easeOut })
       .from('.slider', 1, { opacity: 0, y: 100, ease: Bounce.easeOut })
-      .from('.hr', 0.5, { x: -1000, opacity: 0 });
+      .from('.hr', 1, { opacity: 0 });
     function Gallery() {
       const gallery1 = new TimelineMax({ paused: true });
       gallery1.staggerFrom('img.img-fluid.r1-c1', 1, {
@@ -72,7 +72,7 @@ class Home extends Component {
       }, 1);
       const gallery12 = new TimelineMax({ paused: true });
       gallery12.staggerFrom('img.img-fluid.r4-c3', 1, {
-        opacity: 0, y: 300,
+        opacity: 0, rotationY: 360,
       }, 1);
       const offset1 = $('img.img-fluid.r1-c1').offset().top;
       const offset2 = $('img.img-fluid.r1-c2').offset().top;
@@ -126,7 +126,6 @@ class Home extends Component {
       });
       $(window).on('touchmove', (e) => {
         const touch = e.touches[0];
-        console.log(Math.floor(touch.pageY));
         if (touch.pageY >= (offset1)) {
           gallery1.play();
         }
@@ -189,14 +188,12 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <LoadPicture />
-        <div className="container">
-          <Carousel />
-          <Intro />
-          <hr className="hr" />
-          <ListImage />
-        </div>
+        <Carousel />
+        <Intro />
+        <hr className="hr" />
+        <ListImage />
       </div>
     );
   }

@@ -11,22 +11,40 @@ $padding_bottom_responsive: 4rem;
   background-size: 100%;
   height: 207rem;
   @media (max-width: 767px) {
-    position: static;
     width: 100%;
-    height: 375rem;
+    height: auto;
     padding: $padding_top_responsive;
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    height: 220rem;
+  }
+  @media (min-width: 992px) and (max-width: 1199px) {
+    height: 275rem;
+  }
+  @media (min-width: 992px) and (max-width: 1199px) and (max-height: 700px) {
+    height: 195rem;
   }
   img {
     position: absolute;
     width: 30rem;
     height: 30rem;
+    @media (max-width: 767px) {
+      position: static;
+      width: 100%;
+      height: auto;
+      left: 0;
+      padding: $padding_top_responsive;
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      position: absolute;
+      width: 30rem;
+      height: 30rem;
+    }
     //Row 1
     &.r1 {
-      &-c1 {
-        height: 60rem;
+      &-c1 { //r1-c1
         //Responsive small devices
-        @media (max-width: 767px) {
-          position: static;
+        @media (max-width: 575px) {
           width: 100%;
           height: auto;
           padding: $padding_top_responsive;
@@ -34,15 +52,15 @@ $padding_bottom_responsive: 4rem;
         //Responsive medium devices
         @media (min-width: 768px) and (max-width: 991px) {
           width: auto;
-          height: 46rem;
+          height: 45rem;
         }
         //Responsive large devices
         @media (min-width: 992px) and (max-width: 1199px) {
           width: auto;
-          height: 53rem;
+          height: 50rem;
         }
       }
-      &-c2 {
+      &-c2 { //r1-c2
         top: 30rem;
         right: 45rem;
         width: auto;
@@ -50,16 +68,24 @@ $padding_bottom_responsive: 4rem;
         z-index: 2;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static;
           width: 100%;
           height: auto;
+          top: 62rem;
           padding: $padding_top_responsive;
         }
-        //Responsive medium devices
         @media (min-width: 768px) and (max-width: 991px) {
+          width: 19rem;
+          height: auto;
+          top: 15rem;
+          z-index: 2;
+          left: 35rem;
+        }
+        //Responsive medium devices
+        @media (min-width: 851px) and (max-width: 991px) {
           width: 20rem;
           top: 23rem;
           height: auto;
+          z-index: 2;
           left: 29rem;
         }
         //Responsive large devices
@@ -71,22 +97,28 @@ $padding_bottom_responsive: 4rem;
           z-index: 2;
         }
       }
-      &-c3 {
+      &-c3 { //r1-c3
         right: 13rem;
         top: 11rem;
         width: 35rem;
         height: auto;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static;
           width: 100%;
           height: auto;
+          top: 86rem;
           margin-top: 0;
           padding: $padding_top_responsive;
         }
+        @media (min-width: 768px) and (max-width: 850px) {
+          width: 19rem;
+          height: auto;
+          top: 5rem;
+          left: 50rem;
+        }
         //Responsive medium devices
-        @media (min-width: 768px) and (max-width: 991px) {
-          right: 2rem;
+        @media (min-width: 851px) and (max-width: 991px) {
+          right: 3rem;
           top: 10rem;
           width: 25rem;
           height: auto;
@@ -109,11 +141,10 @@ $padding_bottom_responsive: 4rem;
         left: 4rem;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static;
-          width: 100% ;
+          width: 100%;
           height: auto;
-          margin-left: 0 ;
-          margin-top: 0 ;
+          top: 106rem;
+          left: 0;
           padding: $padding_top_responsive;
         }
         //Responsive medium devices
@@ -131,18 +162,17 @@ $padding_bottom_responsive: 4rem;
           left: 5rem;
         }
       }
-      &-c2 {
+      &-c2 { //r2-c2
         width: auto;
         height: 30rem;
         top: 61rem;
         left: 38rem;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static;
-          width: 100% ;
+          width: 100%;
           height: auto;
-          margin-left: 0 ;
-          margin-top: 0 ;
+          top: 130rem;
+          left: 0;
           padding: $padding_top_responsive;
         }
         //Responsive medium devices
@@ -160,25 +190,30 @@ $padding_bottom_responsive: 4rem;
           left: 33rem;
         }
       }
-      &-c3 {
+      &-c3 {//r2-c3
         top: 50rem;
         width: auto;
         height: 30rem;
         right: 5rem;
          //Responsive small devices
          @media (max-width: 767px) {
-          position: static ;
-          width: 100% ;
+          width: 100%;
           height: auto;
-          margin-left: 0 ;
-          margin-top: 0 ;
+          left: 0;
+          top: 155rem;
           padding: $padding_top_responsive;
         }
         //Responsive medium devices
-        @media (min-width: 768px) and (max-width: 991px) {
+        @media (min-width: 768px) and (max-width: 850px) {
           width: 19rem;
           height: auto;
           top: 33rem;
+          left: 52rem;
+        }
+        @media (min-width: 851px) and (max-width: 991px) {
+          width: 19rem;
+          height: auto;
+          top: 40rem;
           left: 50rem;
         }
         //Responsive large devices
@@ -191,18 +226,17 @@ $padding_bottom_responsive: 4rem;
     }
     //Row 3
     &.r3 {
-      &-c1 {
+      &-c1 { //r3-c1
         width: auto;
         height: 48rem;
         top: 105rem;
         left: 7rem;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static;
           width: 100%;
           height: auto;
-          margin-left: 0;
-          margin-top: 0 ;
+          top: 196rem;
+          left: 0;
           padding: $padding_top_responsive;
         }
         //Responsive medium devices
@@ -220,7 +254,7 @@ $padding_bottom_responsive: 4rem;
           left: 3rem;
         }
       }
-      &-c2 {
+      &-c2 { //r3-c2
         z-index: 2;
         right: 29rem;
         top: 96rem;
@@ -228,17 +262,15 @@ $padding_bottom_responsive: 4rem;
         width: 30rem;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static ;
           width: 100% ;
           height: auto;
-          margin-left: 0;
-          margin-top: 0 ;
+          top: 240rem;
           padding: $padding_top_responsive;
         }
         //Responsive medium devices
         @media (min-width: 768px) and (max-width: 991px) {
           width: auto;
-          left: 33rem;
+          left: 32rem;
           top: 80rem;
           height: 17rem;
           z-index: 2;
@@ -252,18 +284,17 @@ $padding_bottom_responsive: 4rem;
           width: 30rem;
         }
       }
-      &-c3 {
+      &-c3 { //r3-c3
         width: 30rem;
         height: auto;
         top: 112rem;
         right: 4rem;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static ;
-          width: 100% ;
+          width: 100%;
           height: auto;
-          margin-left: 0;
-          margin-top: 0 ;
+          left: 0;
+          top: 265rem;
           padding: $padding_top_responsive;
         }
         //Responsive medium devices
@@ -281,18 +312,16 @@ $padding_bottom_responsive: 4rem;
     }
     //Row 4
     &.r4 {
-      &-c1 {
+      &-c1 { //r4-c1
         top: 160rem;
         height: auto;
         width: 25rem;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static;
-          width: 100% ;
+          width: 100%;
           height: auto;
-          margin-left: 0 ;
-          margin-top: 0 ;
-          padding: $padding_top_responsive;
+          top: 289rem;
+          padding: $padding_top_responsive;padding: 2rem;
         }
         //Responsive medium devices
         @media (min-width: 768px) and (max-width: 991px) {
@@ -309,7 +338,7 @@ $padding_bottom_responsive: 4rem;
           width: 25rem;
         }
       }
-      &-c2 {
+      &-c2 { //r4-c2
         top: 175rem;
         height: auto;
         left: 25rem;
@@ -317,11 +346,10 @@ $padding_bottom_responsive: 4rem;
         z-index: 2;
         //Responsive small devices
         @media (max-width: 767px) {
-          position: static ;
-          width: 100% ;
+          width: 100%;
           height: auto;
-          margin-left: 0 ;
-          margin-top: 0 ;
+          left: 0;
+          top: 312rem;
           padding: $padding_top_responsive;
         }
         //Responsive medium devices
@@ -341,19 +369,40 @@ $padding_bottom_responsive: 4rem;
           z-index: 2;
         }
       }
-      &-c3 {
+      &-c3 { // r4-c3
         height: auto;
         right: 12rem;
         width: 32rem;
         z-index: 2;
         top: 149rem;
         //Responsive small devices
-        @media (max-width: 767px) {
-          position: static ;
+        @media (max-width: 767px) and (max-height: 568px){
+          width: 100%;
+          height: auto;
+          left: 0;
+          top: 354rem;
+          margin-bottom: 0;
+          padding: $padding_top_responsive;
+        }
+        @media (max-width: 767px) and (min-height: 569px) and  (max-height: 700px){
           width: 100% ;
           height: auto;
           margin-left: 0;
-          margin-top: 0 ;
+          margin-bottom: 8rem;
+          padding: $padding_top_responsive;
+        }
+        @media (max-width: 767px) and (min-height: 700px) and (max-height: 750px){
+          width: 100% ;
+          height: auto;
+          margin-left: 0;
+          margin-bottom: 15rem;
+          padding: $padding_top_responsive;
+        }
+        @media (max-width: 767px) and (min-height: 750px){
+          width: 100% ;
+          height: auto;
+          margin-left: 0;
+          margin-bottom: 23rem;
           padding: $padding_top_responsive;
         }
         //Responsive medium devices

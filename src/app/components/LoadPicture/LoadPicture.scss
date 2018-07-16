@@ -2,7 +2,11 @@
 .img-load.text-center {
   position: fixed;
   top: 50vh;
-  left: 40vw;
+  left: 50vw;
+  @media (max-width: 576px) {
+    left: 30vw;
+    top: 45vh;
+  }
 }
 img.image-gs {
   width: 15rem;

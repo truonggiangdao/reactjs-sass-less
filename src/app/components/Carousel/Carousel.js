@@ -17,7 +17,7 @@ class Carousel extends Component {
       // variableWidth: true,
       dots: true,
       infinite: true,
-      slidesToShow: 3,
+      slidesToShow: 4,
       slidesToScroll: 1,
       initialSlide: 0,
       // autoplay: true,
